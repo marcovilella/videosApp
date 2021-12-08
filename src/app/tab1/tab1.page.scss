@@ -1,6 +1,12 @@
 ion-item {
+
+  --padding-start: 8px;
+  --inner-padding-end: 8px;
+
   ion-thumbMail {
     height: 100%;
+    margin-inline-end: 8px;
+
   }
 
   h1 {
