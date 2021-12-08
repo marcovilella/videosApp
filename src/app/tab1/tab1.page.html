@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
     <ion-title>
-      Videos App
+      {{ titulo }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,13 +14,13 @@
     <ion-item-sliding>
       <ion-item lines="full">
         <ion-thumbnail slot="start">
-          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/44aCR6cjH0FbzW6PMw3Ega178iW.jpg" />
+          <img src="" />
         </ion-thumbnail>
         <ion-label class="ion-text-wrap">
           <div>
-            <h1>Mortal Kombat (2021)</h1>
-            <p>15/04/2021 (BR) - 1h 50m</p>
-            <p>Ação, Fantasia, Aventura</p>
+            <h1></h1>
+            <p> (BR) - </p>
+            <p></p>
           </div>
         </ion-label>
         <ion-chip color="success" outline>
@@ -59,7 +59,16 @@
     </ion-item-sliding>
   </ion-list>
 
-
+  <ion-button>Default</ion-button>
+  <ion-button color="primary">Primary</ion-button>
+  <ion-button color="secondary">Secondary</ion-button>
+  <ion-button color="tertiary">Tertiary</ion-button>
+  <ion-button color="success">Success</ion-button>
+  <ion-button color="warning">Warning</ion-button>
+  <ion-button color="danger">Danger</ion-button>
+  <ion-button color="light">Light</ion-button>
+  <ion-button color="medium">Medium</ion-button>
+  <ion-button color="dark">Dark</ion-button>
 
 
 </ion-content>
