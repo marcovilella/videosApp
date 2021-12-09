@@ -10,7 +10,7 @@
   <!-- List of Text Items -->
   <ion-list>
     <ion-item-sliding *ngFor="let filme of listaVideos">
-      <ion-item lines="full">
+      <ion-item lines="full" (click)="exibirFilme(filme)">
         <ion-thumbnail slot="start">
           <img [src]="filme.cartaz" />
         </ion-thumbnail>
@@ -36,7 +36,7 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-button>Default</ion-button>
+  <!-- <ion-button>Default</ion-button>
   <ion-button color="primary">Primary</ion-button>
   <ion-button color="secondary">Secondary</ion-button>
   <ion-button color="tertiary">Tertiary</ion-button>
@@ -45,5 +45,5 @@
   <ion-button color="danger">Danger</ion-button>
   <ion-button color="light">Light</ion-button>
   <ion-button color="medium">Medium</ion-button>
-  <ion-button color="dark">Dark</ion-button>
+  <ion-button color="dark">Dark</ion-button> -->
 </ion-content>
