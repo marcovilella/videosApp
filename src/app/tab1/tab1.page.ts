@@ -12,7 +12,7 @@ export class Tab1Page {
 
   titulo = 'Vídeos';
 
-  listarVideos: IFilme[] = [
+  listaVideos: IFilme[] = [
     {
       nome: 'Mortal Kombat (2021)',
       lancamento: '15/04/2021',
@@ -22,12 +22,21 @@ export class Tab1Page {
       generos: ['Ação', 'Fantasia', 'Aventura']
     },
     {
-      nome: '',
-      lancamento: '',
-      duracao: '',
-      classificacao: 0,
-      cartaz: '',
-      generos: []
+      nome: 'Liga da Justiça de Zack Snyder (2021)',
+      lancamento: '18/03/2021',
+      duracao: '4h 2m',
+      classificacao: 84,
+      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ArWn6gCi61b3b3hclD2L0LOk66k.jpg',
+      generos: ['Ação', 'Aventura', 'Fantasia', 'Ficção científica' ]
+
+    },
+    {
+      nome: 'Novo Filme (2021)',
+      lancamento: '18/03/2021',
+      duracao: '4h 2m',
+      classificacao: 84,
+      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ArWn6gCi61b3b3hclD2L0LOk66k.jpg',
+      generos: ['Ação', 'Aventura', 'Fantasia', 'Ficção científica' ]
 
     }
 
