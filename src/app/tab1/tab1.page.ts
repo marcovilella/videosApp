@@ -4,6 +4,7 @@ import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { DadosService } from './../services/dados.service';
 import { IFilme } from './../models/IFilme.models';
+import { FilmeService } from '../services/filme.service';
 
 @Component({
   selector: 'app-tab1',
@@ -48,8 +49,9 @@ export class Tab1Page {
     public alertController: AlertController,
     public toastController: ToastController,
     public dadosService: DadosService,
+    public filmeService: FilmeService,
     public route: Router
-  ) {}
+  ) { }
 
   exibirFilme(filme: IFilme) {
     this.dadosService.guardarDados('filme', filme);
