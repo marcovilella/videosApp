@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DadosService } from './../services/dados.service';
-import { IFilme } from './../models/IFilme.models';
+import { IFilmeApi } from '../models/IFilmeAPI.models';
 
 @Component({
   selector: 'app-dados-filme',
@@ -8,12 +8,16 @@ import { IFilme } from './../models/IFilme.models';
   styleUrls: ['./dados-filme.page.scss'],
 })
 export class DadosFilmePage implements OnInit {
-  filme: IFilme;
+
+  filme: IFilmeApi;
+
+  generos: string[] = [];
 
   constructor(public dadosService: DadosService) { }
 
   ngOnInit() {
     this.filme = this.dadosService.pegarDados('filme');
+    this.generos = this.dadosService.pegarDados('generos');
     console.log('Filme Enviado', this.filme);
 
   }

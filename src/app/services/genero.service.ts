@@ -1,17 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
-import { IListaFilmes } from '../models/IFilmeAPI.models';
-import { map, catchError } from 'rxjs/operators';
+import { IListaGenero } from './../models/IGenero.models';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FilmeService {
+export class GeneroService {
 
   lingua = 'pt-BR';
-  regiao = 'BR';
 
   private apiURL = 'https://api.themoviedb.org/3/';
   private key = '?api_key=2896795d7d5bdf8445f3f9dc6fa32877';
@@ -19,11 +18,11 @@ export class FilmeService {
   constructor(
     private http: HttpClient,
     public toastController: ToastController,
-    ) { }
+  ) { }
 
-  buscarFilmes(busca: string): Observable<IListaFilmes>{
-    const url = `${this.apiURL}search/movie${this.key}&language=${this.lingua}&region=${this.regiao}&query=${busca}`;
-    return this.http.get<IListaFilmes>(url)
+  buscarGeneros(): Observable<IListaGenero> {
+    const url = `${this.apiURL}genre/movie/list${this.key}&language=${this.lingua}`;
+    return this.http.get<IListaGenero>(url)
       .pipe(
         map(retorno => retorno),
         catchError(erro => this.exibirErro(erro))
@@ -31,7 +30,7 @@ export class FilmeService {
   }
   async exibirErro(erro) {
     const toast = await this.toastController.create({
-      message: 'Erro ao fazer busca.',
+      message: 'Erro ao fazer busca de genero.',
       duration: 2000,
       color: 'danger',
       position: 'middle'

@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { DadosService } from './../services/dados.service';
 import { IFilme } from './../models/IFilme.models';
 import { FilmeService } from '../services/filme.service';
+import { IListaFilmes, IFilmeApi } from '../models/IFilmeAPI.models';
+import { GeneroService } from '../services/genero.service';
+import { IGenero } from '../models/IGenero.models';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
-export class Tab1Page {
-  titulo = 'Vídeos';
+export class Tab1Page implements OnInit {
+  titulo = 'Filmes';
 
   listaVideos: IFilme[] = [
     {
@@ -45,15 +48,32 @@ export class Tab1Page {
     // }
   ];
 
+  listaFilmes: IListaFilmes;
+
+  generos: string[] = [];
+
   constructor(
     public alertController: AlertController,
     public toastController: ToastController,
     public dadosService: DadosService,
     public filmeService: FilmeService,
+    public generoService: GeneroService,
     public route: Router
-  ) { }
+  ) {}
 
-  exibirFilme(filme: IFilme) {
+  buscarFilmess(evento: any) {
+    console.log(evento.target.value);
+    const busca = evento.target.value;
+    if (busca && busca.trim()) {
+      this.filmeService.buscarFilmes(busca).subscribe((dados) => {
+        console.log(dados);
+        this.listaFilmes = dados;
+      });
+    }
+  }
+
+  exibirFilme(filme: IFilmeApi) {
+  // exibirFilme(filme: IFilme) {
     this.dadosService.guardarDados('filme', filme);
     this.route.navigateByUrl('dados-filme');
   }
@@ -90,4 +110,16 @@ export class Tab1Page {
     });
     toast.present();
   }
+
+  ngOnInit(): void {
+      this.generoService.buscarGeneros().subscribe(dados => {
+        console.log('Generos: ', dados.genres);
+        dados.genres.forEach(genero => {
+          this.generos[genero.id] = genero.name;
+        });
+        this.dadosService.guardarDados('generos', this.generos);
+      });
+
+  }
+
 }
